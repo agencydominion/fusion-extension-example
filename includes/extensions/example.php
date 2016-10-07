@@ -147,14 +147,14 @@ function fsn_example_shortcode( $atts, $content ) {
 	wp_enqueue_script( 'fsn_example');
 	
 	$output = '<div class="fsn-example '. fsn_style_params_class($atts) .'">';
-		$output .= !empty($example_text) ? '<h5>Example Text:</h5>'. esc_html($example_text): '';
-		$output .= !empty($content) ? '<h5>Example Textarea:</h5>'. do_shortcode($content) : ''; 
-		$output .= !empty($example_checkbox) ? '<p>Example Checkbox is <strong>on</strong></p>' : '<p>Example Checkbox is <strong>off</strong></p>';
-		$output .= !empty($example_radio) ? '<p>Example Radio is set to <strong>'. esc_html($example_radio) .'</strong></p>' : '';
-		$output .= !empty($example_select) ? '<p>Example Select is set to <strong>'. esc_html($example_select) .'</strong></p>' : '';
-		$output .= !empty($example_colorpicker) ? '<p>Example Colorpicker is set to <span style="display:inline-block;vertical-align:middle;width:20px;height:20px;margin-left:5px;background:'. esc_attr($example_colorpicker) .';"></span></p>' : '';
+		$output .= !empty($example_text) ? '<h5>'. __('Example Text', 'fusion-extension-example') .':</h5>'. esc_html($example_text): '';
+		$output .= !empty($content) ? '<h5>'. __('Example Textarea', 'fusion-extension-example') .':</h5>'. do_shortcode($content) : ''; 
+		$output .= !empty($example_checkbox) ? '<p>'. __('Example Checkbox is', 'fusion-extension-example') .' <strong>'. __('on', 'fusion-extension-example') .'</strong></p>' : '<p>'. __('Example Checkbox is', 'fusion-extension-example') .' <strong>'. __('off', 'fusion-extension-example') .'</strong></p>';
+		$output .= !empty($example_radio) ? '<p>'. __('Example Radio is set to', 'fusion-extension-example') .' <strong>'. esc_html($example_radio) .'</strong></p>' : '';
+		$output .= !empty($example_select) ? '<p>'. __('Example Select is set to', 'fusion-extension-example') .' <strong>'. esc_html($example_select) .'</strong></p>' : '';
+		$output .= !empty($example_colorpicker) ? '<p>'. __('Example Colorpicker is set to', 'fusion-extension-example') .' <span style="display:inline-block;vertical-align:middle;width:20px;height:20px;margin-left:5px;background:'. esc_attr($example_colorpicker) .';"></span></p>' : '';
 		if (!empty($example_image)) {
-			$output .= '<p>Example Image:';
+			$output .= '<p>'. __('Example Image', 'fusion-extension-example') .':';
 				$attachment_attrs = wp_get_attachment_image_src(intval($example_image), 'thumbnail');
 				$attachment_alt = get_post_meta(intval($example_image), '_wp_attachment_image_alt', true);
 				$output .= !empty($attachment_attrs) ? '<img src="'. esc_url($attachment_attrs[0]) .'" width="'. esc_attr($attachment_attrs[1]) .'" height="'. esc_attr($attachment_attrs[2]) .'" alt="'. esc_attr($attachment_alt) .'">' : '';
@@ -162,7 +162,7 @@ function fsn_example_shortcode( $atts, $content ) {
 		}
 		if (!empty($example_button)) {
 			$button_object = fsn_get_button_object($example_button);
-			$output .= 'Example Button: <a'. fsn_get_button_anchor_attributes($button_object) .'>'. esc_html($button_object['button_label']) .'</a>';
+			$output .= ''. __('Example Button', 'fusion-extension-example') .': <a'. fsn_get_button_anchor_attributes($button_object) .'>'. esc_html($button_object['button_label']) .'</a>';
 		}
 	$output .= '</div>';
 	

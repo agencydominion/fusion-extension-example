@@ -7,7 +7,7 @@
  * Plugin Name: Fusion : Extension - Example
  * Plugin URI: http://www.agencydominion.com/fusion/
  * Description: Example Extension Package for Fusion.
- * Version: 1.0.1
+ * Version: 1.1.1
  * Author: Agency Dominion
  * Author URI: http://agencydominion.com
  * License: GPL2
