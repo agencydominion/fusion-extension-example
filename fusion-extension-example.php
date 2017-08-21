@@ -7,9 +7,11 @@
  * Plugin Name: Fusion : Extension - Example
  * Plugin URI: http://www.agencydominion.com/fusion/
  * Description: Example Extension Package for Fusion.
- * Version: 1.1.1
+ * Version: 1.1.2
  * Author: Agency Dominion
  * Author URI: http://agencydominion.com
+ * Text Domain: fusion-extension-example
+ * Domain Path: /languages/
  * License: GPL2
  */
  
@@ -25,7 +27,7 @@ class FusionExtensionExample	{
 	public function __construct() {
 						
 		// Initialize the language files
-		load_plugin_textdomain( 'fusion-extension-example', false, plugin_dir_url( __FILE__ ) . 'languages' );
+		add_action('plugins_loaded', array($this, 'load_textdomain'));
 		
 		// Enqueue admin scripts and styles
 		add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts_styles'));
@@ -33,6 +35,17 @@ class FusionExtensionExample	{
 		// Enqueue front end scripts and styles
 		add_action('wp_enqueue_scripts', array($this, 'front_enqueue_scripts_styles'));
 		
+	}
+	
+	/**
+	 * Load Textdomain
+	 *
+	 * @since 1.1.2
+	 *
+	 */
+	 
+	public function load_textdomain() {
+		load_plugin_textdomain( 'fusion-extension-example', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
 	}
 	
 	/**
