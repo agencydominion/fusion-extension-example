@@ -1,4 +1,3 @@
 /**
- * Scripts for Fusion Extension - Example
+ * Scripts for Fusion Extension : Example
  */
- 
